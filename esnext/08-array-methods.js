@@ -1,11 +1,11 @@
-const arr = [1, 2, 3, 4, 5]
+const arr = [1, 2, 3, 4, 5];
 
-const square = (num) => num ** 2
-const isEven = (num) => num % 2 === 0
-const sum = (num1, num2) => num1 + num2
+const square = (num) => num ** 2;
+const isEven = (num) => num % 2 === 0;
+const sum = (num1, num2) => num1 + num2;
 
 for (let i = 0; i < arr.length; i++) {
-  console.log(i, arr[i])
+  console.log(i, arr[i]);
 }
 
 // for (let key in obj) {
@@ -15,139 +15,188 @@ for (let i = 0; i < arr.length; i++) {
 // }
 
 for (const item of arr) {
-  console.log(item)
+  console.log(item);
 }
 
 arr.forEach((item, index, arr) => {
-  console.log(item, index, arr)
-})
+  console.log(item, index, arr);
+});
 
 arr.forEach((item) => {
-  console.log(item)
-})
+  console.log(item);
+});
 
 {
-  const squares = []
+  const squares = [];
   for (const item of arr) {
-    squares.push(item * item)
+    squares.push(item * item);
   }
-  console.log(squares)
+  console.log(squares);
 }
 
 {
   // const squares = arr.map((item) => {
   //   return item * item
   // })
-  const squares = arr.map(square)
-  console.log(arr)
-  console.log(squares)
+  // const squares = arr.map((item) => {
+  //   return square(item);
+  // });
+  // const squares = arr.map((item) => square(item));
+  const squares = arr.map(square);
+  console.log(arr);
+  console.log(squares);
 }
 
 {
-  const evens = []
+  const evens = [];
   for (const item of arr) {
     if (isEven(item)) {
-      evens.push(item)
+      evens.push(item);
     }
   }
-  console.log(evens)
+  console.log(evens);
 }
 
 {
-  const evens = arr.filter(isEven)
-  console.log(evens)
+  const evens = arr.filter(isEven);
+  console.log(evens);
 }
 
 {
-  let even = null
+  let even = null;
   for (let i = 0; even == null && i < arr.length; i++) {
-    const item = arr[i]
+    const item = arr[i];
     if (isEven(item)) {
-      even = item
+      even = item;
     }
   }
-  console.log(even)
+  console.log(even);
 }
 
 {
-  const even = arr.find(isEven)
-  console.log(even)
+  const even = arr.find(isEven);
+  console.log(even);
 }
 
 {
-  let index = -1
+  let index = -1;
   for (let i = 0; index < 0 && i < arr.length; i++) {
-    const item = arr[i]
+    const item = arr[i];
     if (isEven(item)) {
-      index = i
+      index = i;
     }
   }
-  console.log(index)
+  console.log(index);
 }
 
 {
-  const index = arr.findIndex(isEven)
-  console.log(index)
+  const index = arr.findIndex(isEven);
+  console.log(index);
 }
 
 {
-  let hasEven = false
+  let hasEven = false;
   for (const item of arr) {
     if (isEven(item)) {
-      hasEven = true
+      hasEven = true;
     }
   }
-  console.log(hasEven)
+  console.log(hasEven);
 }
 
 {
-  const hasEven = arr.some(isEven)
-  console.log(hasEven)
+  const hasEven = arr.some(isEven);
+  console.log(hasEven);
 }
 
 {
-  let allEven = true
+  let allEven = true;
   for (const item of arr) {
     if (!isEven(item)) {
-      allEven = false
+      allEven = false;
     }
   }
-  console.log(allEven)
+  console.log(allEven);
 }
 
 {
-  const allEven = arr.every(isEven)
-  console.log(allEven)
+  const allEven = arr.every(isEven);
+  console.log(allEven);
 }
 
 {
-  let acc = 0 // init
+  let acc = 0; // init
   for (const item of arr) {
-    acc += item // accumulate
+    acc += item; // accumulate
   }
-  console.log(acc) // return
+  console.log(acc); // return
 }
 
 {
-  let acc = arr[0] // init
+  let acc = arr[0]; // init
   for (let i = 1; i < arr.length; i++) {
-    acc += arr[i] // accumulate
+    acc += arr[i]; // accumulate
   }
-  console.log(acc) // return
+  console.log(acc); // return
 }
 
 {
-  const sum = arr.reduce(
-    (acc, item) => {
-      acc += item
-      return acc
-    },
-    0
-  )
-  console.log(sum)
+  const sum = arr.reduce((acc, item) => {
+    acc += item;
+    return acc;
+  }, 0);
+  console.log(sum);
 }
 
 {
-  const sumOfNumbers = arr.reduce(sum)
-  console.log(sumOfNumbers)
+  const sumOfNumbers = arr.reduce(sum);
+  console.log(sumOfNumbers);
 }
+
+/** Sum Of Square Evens: [1, 2, 3, 4, 5] -> [2, 4] -> [4, 16] -> 20 */
+
+function proceduralSumOfSquareEvens(arr) {
+  let acc = 0;
+  for (const item of arr) {
+    if (isEven(item)) {
+      const squaredItem = square(item);
+      acc = sum(acc, squaredItem);
+    }
+  }
+  return acc;
+}
+
+console.log(proceduralSumOfSquareEvens(arr));
+
+function declarativeSumOfSquareEvens(arr) {
+  return arr //
+    .filter(isEven)
+    .map(square)
+    .reduce(sum);
+}
+
+console.log(declarativeSumOfSquareEvens(arr));
+
+/** Sum Of Even Squares: [1, 2, 3, 4, 5] -> [1, 4, 9, 16, 25] -> [4, 16] -> 20 */
+
+function proceduralSumOfEvenSquares(arr) {
+  let acc = 0;
+  for (const item of arr) {
+    const squaredItem = square(item);
+    if (isEven(squaredItem)) {
+      acc = sum(acc, squaredItem);
+    }
+  }
+  return acc;
+}
+
+console.log(proceduralSumOfEvenSquares(arr));
+
+function declarativeSumOfEvenSquares(arr) {
+  return arr //
+    .map(square)
+    .filter(isEven)
+    .reduce(sum);
+}
+
+console.log(declarativeSumOfEvenSquares(arr));
