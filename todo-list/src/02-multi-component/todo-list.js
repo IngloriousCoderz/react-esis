@@ -10,44 +10,21 @@ const DEFAULT_TASKS = [
 ];
 
 function TodoList({ who }) {
-  const [text, setText] = useState("");
   const [tasks, setTasks] = useState(DEFAULT_TASKS);
 
-  const handleChange = (event) => setText(event.target.value);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
+  const handleSubmit = (text) => {
     setTasks((tasks) => {
       const maxId = tasks.length ? tasks[tasks.length - 1].id : 0;
       const task = { id: maxId + 1, text };
       return [...tasks, task];
     });
-
-    setText("");
   };
-
-  const handleToggleClick = (id) =>
-    setTasks((tasks) => {
-      return tasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      );
-    });
-
-  const handleRemoveClick = (id) =>
-    setTasks((tasks) => {
-      return tasks.filter((task) => task.id !== id);
-    });
 
   return (
     <>
       <h1>{who}'s Todo List</h1>
-      <Form text={text} onChange={handleChange} onSubmit={handleSubmit} />
-      <List
-        tasks={tasks}
-        onToggleClick={handleToggleClick}
-        onRemoveClick={handleRemoveClick}
-      />
+      <Form onSubmit={handleSubmit} />
+      <List tasks={tasks} setTasks={setTasks} />
     </>
   );
 }

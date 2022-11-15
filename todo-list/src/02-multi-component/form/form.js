@@ -1,4 +1,10 @@
+// import { useForm } from "./use-form";
+
+// Presentational Component
+// funzione pura delle props
 function Form({ text, onChange, onSubmit }) {
+  // const { text, handleChange, handleSubmit } = useForm({ onSubmit });
+
   return (
     <form onSubmit={onSubmit}>
       <input
