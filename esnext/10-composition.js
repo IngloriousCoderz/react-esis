@@ -73,11 +73,11 @@ console.log(strings.map((str) => wrapInP(exclamate(shout(str)))));
 
 {
   const funcs = [shout, exclamate, wrapInP];
-  let message = "hello world";
+  let message = "hello world"; // initialize
   for (const func of funcs) {
-    message = func(message);
+    message = func(message); // accumulate
   }
-  console.log(message);
+  console.log(message); // return
 }
 
 const funcs = [shout, exclamate, wrapInP];
