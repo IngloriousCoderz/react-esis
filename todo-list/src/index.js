@@ -1,8 +1,11 @@
 // import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./03-client-server/todo-list";
+import App from "./05-react-redux/todo-list";
+// root.render(React.createElement(App));
+
+// import store from "./04-redux/todo-list";
+// console.log(store);
 // import App from "./03-client-server/todo-list-class";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App who="Matteo Antony" />);
-// root.render(React.createElement(App));

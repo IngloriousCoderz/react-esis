@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+
 import {
   SET_TEXT,
   ADD_TASK,
@@ -17,13 +19,13 @@ const INITIAL_STATE = {
 // [value1, value2]
 // { text, list} -> [[key, value], [key, value]]
 
-const combineReducers =
-  (reducers) =>
-  (state = {}, action) =>
-    Object.entries(reducers).reduce((acc, [key, value]) => {
-      acc[key] = value(state[key], action);
-      return acc;
-    }, state);
+// const combineReducers =
+//   (reducers) =>
+//   (state = {}, action) =>
+//     Object.entries(reducers).reduce((acc, [key, value]) => {
+//       acc[key] = value(state[key], action);
+//       return acc;
+//     }, state);
 
 export default combineReducers({ text, list });
 
