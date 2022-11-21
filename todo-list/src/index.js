@@ -1,6 +1,6 @@
 // import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./05-react-redux/todo-list";
+import App from "./06-redux-thunk/todo-list";
 // root.render(React.createElement(App));
 
 // import store from "./04-redux/todo-list";

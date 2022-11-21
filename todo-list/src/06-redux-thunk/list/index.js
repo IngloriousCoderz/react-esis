@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeTask, toggleCompleted } from "../store/action-creators";
+import { fetchTasks, removeTask, toggleCompleted } from "../store/thunks";
 import { selectList } from "../store/selectors";
 
 import ListComponent from "./list";
@@ -11,6 +12,10 @@ function List() {
 
   const handleToggleClick = (id) => dispatch(toggleCompleted(id));
   const handleRemoveClick = (id) => dispatch(removeTask(id));
+
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
 
   return (
     <ListComponent

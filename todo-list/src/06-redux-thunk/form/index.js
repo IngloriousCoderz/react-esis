@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import FormComponent from "./form";
-import { addTask, setText } from "../store/action-creators";
+import { setText } from "../store/action-creators";
+import { addTask } from "../store/thunks";
 import { selectText } from "../store/selectors";
 
 function Form() {
