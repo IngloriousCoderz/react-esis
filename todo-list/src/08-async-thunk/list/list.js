@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import cn from "classnames";
 
 import classes from "./list.module.scss";
@@ -20,5 +21,21 @@ function List({ tasks, onToggleClick, onRemoveClick }) {
     </ul>
   );
 }
+
+List.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      completed: PropTypes.bool,
+    })
+  ).isRequired,
+  onToggleClick: PropTypes.func,
+  onRemoveClick: PropTypes.func,
+};
+
+List.defaultProps = {
+  tasks: [],
+};
 
 export default List;

@@ -8,3 +8,9 @@ rules:
         - error
   # converts any string concatenation into a template literal
   prefer-template: error
+# disables annoying rule on Storybook stories
+overrides:
+  - files:
+      - "**/*.stories.*"
+    rules:
+      import/no-anonymous-default-export: "off"
