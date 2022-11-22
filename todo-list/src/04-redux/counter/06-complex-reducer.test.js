@@ -1,4 +1,9 @@
-import counter, { increment, decrement, reset } from "./06-complex-reducer";
+import counter, {
+  increment,
+  decrement,
+  reset,
+  selectValue,
+} from "./06-complex-reducer";
 
 describe("Counter App - Reducer", () => {
   it("should initialize the value", () => {
@@ -53,5 +58,12 @@ describe("Counter App - Reducer", () => {
 
     expect(state).toEqual(stateAfter);
     expect(state).toBe(stateBefore);
+  });
+
+  it("should select the counter's value", () => {
+    const state = { value: 4 };
+    const value = 4;
+
+    expect(selectValue(state)).toBe(value);
   });
 });

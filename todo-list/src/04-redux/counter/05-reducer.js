@@ -10,6 +10,7 @@ export const increment = (amount = 1) => ({ type: INCREMENT, payload: amount });
 export const decrement = (amount = 1) => ({ type: DECREMENT, payload: amount });
 export const reset = () => ({ type: RESET });
 
+// reducer
 export default function counter(state = INITIAL_VALUE, action) {
   switch (action.type) {
     case INCREMENT:
@@ -25,6 +26,9 @@ export default function counter(state = INITIAL_VALUE, action) {
       return state;
   }
 }
+
+// selectors
+export const selectValue = (state) => state;
 
 // let state = undefined;
 // state = counter(state, { type: "increment", payload: 2 });

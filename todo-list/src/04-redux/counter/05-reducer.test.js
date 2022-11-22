@@ -1,4 +1,9 @@
-import counter, { increment, decrement, reset } from "./05-reducer";
+import counter, {
+  increment,
+  decrement,
+  reset,
+  selectValue,
+} from "./05-reducer";
 
 describe("Counter App - Reducer", () => {
   it("should initialize the value", () => {
@@ -52,5 +57,12 @@ describe("Counter App - Reducer", () => {
     const state = counter(stateBefore, action);
 
     expect(state).toBe(stateAfter);
+  });
+
+  it("should select the counter's value", () => {
+    const state = 4;
+    const value = 4;
+
+    expect(selectValue(state)).toBe(value);
   });
 });

@@ -27,6 +27,9 @@ export default function counter(state = INITIAL_VALUE, action) {
   }
 }
 
+// selectors
+export const selectValue = (state) => state.value;
+
 // let state = undefined;
 // state = counter(state, { type: "increment", payload: 2 });
 // state = counter(state, { type: "decrement", payload: 3 });

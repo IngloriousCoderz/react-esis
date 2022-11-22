@@ -3,9 +3,10 @@ import { ADD_TASK, TOGGLE_COMPLETED, REMOVE_TASK } from "./action-types";
 export default function list(state = [], action) {
   switch (action.type) {
     case ADD_TASK:
-      const maxId = state.length ? state[state.length - 1].id : 0;
-      const task = { id: maxId + 1, text: action.payload };
-      return [...state, task];
+      return addTask(state, action);
+    // const maxId = state.length ? state[state.length - 1].id : 0;
+    // const task = { id: maxId + 1, text: action.payload };
+    // return [...state, task];
 
     case TOGGLE_COMPLETED:
       return state.map((task) =>
@@ -20,4 +21,10 @@ export default function list(state = [], action) {
     default:
       return state;
   }
+}
+
+function addTask(state, action) {
+  const maxId = state.length ? state[state.length - 1].id : 0;
+  const task = { id: maxId + 1, text: action.payload };
+  return [...state, task];
 }

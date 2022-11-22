@@ -1,6 +1,9 @@
 import { setTasks, setText } from "./action-creators";
 import * as api from "../services/api";
 
+console.log("Hello world!");
+console.error("Ouch!");
+
 export const fetchTasks = () => async (dispatch) => {
   const tasks = await api.retrieveTasks();
   dispatch(setTasks(tasks));
@@ -19,7 +22,7 @@ export const toggleCompleted = (id) => async (dispatch, getState) => {
   dispatch(fetchTasks());
 };
 
-export const removeTask = (id) => async (dispatch, getState) => {
+export const removeTask = (id) => async (dispatch) => {
   await api.deleteTask(id);
   dispatch(fetchTasks());
 };

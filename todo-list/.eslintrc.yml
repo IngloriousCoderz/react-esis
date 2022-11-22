@@ -1,0 +1,10 @@
+extends:
+  - react-app
+  - react-app/jest
+rules:
+  no-console:
+    - warn
+    - allow:
+        - error
+  # converts any string concatenation into a template literal
+  prefer-template: error
